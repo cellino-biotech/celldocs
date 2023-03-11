@@ -1,9 +1,9 @@
 # Home
 
-This is a development site designed to help teammembers organize project codebases.
+This site is designed to help teammembers manage development environments.
 
 ## Topics covered
 
 - **Python** - Manage multiple Python installations and virtual environments
-- **GitHub** - Manage project versioning
-- **Data formats** - Learn basics about the Zarr data format
+  <!-- - **GitHub** - Manage project versioning -->
+  <!-- - **Data formats** - Learn basics about the Zarr data format -->
