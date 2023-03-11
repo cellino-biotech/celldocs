@@ -82,13 +82,16 @@ which pip
 
 If `.pyenv` is not part of the returned paths, you may have to modify your system environment profile (different from your Python environment!).
 
-Add the following lines to `~/.zprofile`:
+Add the following lines to `~/.zshrc`:
 
 ```zsh
-export PATH="$HOME/.pyenv/bin:$PATH"
-export PATH="$HOME/.pyenv/shims:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# Pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init --path)"
+  eval "$(pyenv init -)"
+fi
 ```
 
 Then refresh your environment and check the `python` and `pip` executables:
@@ -191,7 +194,7 @@ pyenv install --list
 Restrict the output to a specific major Python version:
 
 ```ps1
-pyenv install -Filter "* 3.10*" # Only show Python 3.10.x
+pyenv install --list -Filter "* 3.10*" # Only show Python 3.10.x
 ```
 
 Install a Python version:
