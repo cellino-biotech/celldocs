@@ -25,7 +25,6 @@ curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | 
 Confirm installation:
 
 ```zsh
-source ~/.zprofile
 brew --version
 ```
 
@@ -41,7 +40,6 @@ brew install pyenv-virtualenv
 Confirm installation:
 
 ```zsh
-source ~/.zprofile
 pyenv --version
 ```
 
@@ -60,13 +58,13 @@ pyenv install --list | grep " 3.10" # Only show Python 3.10.x
 Install a Python version:
 
 ```zsh
-pyenv install 3.10.2
+pyenv install 3.10.5
 ```
 
 Set the global Python version:
 
 ```zsh
-pyenv global 3.10.2
+pyenv global 3.10.5
 ```
 
 The global version will become the default Python for your shell.
@@ -94,10 +92,10 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 ```
 
-Then refresh your environment and check the `python` and `pip` executables:
+Refresh your environment and check the `python` and `pip` executables:
 
 ```zsh
-source ~/.zprofile
+source ~/.zshrc
 which python
 which pip
 ```
@@ -109,22 +107,28 @@ In addition to providing management tools for Python installations, `pyenv` also
 Create a new virtual environment for a project, specifying the Python version and environment name:
 
 ```zsh
-pyenv virtualenv 3.10.5 project-env
+pyenv virtualenv 3.10.5 env
 ```
 
 Activate the environment:
 
 ```zsh
-pyenv shell project-env
+pyenv shell env
 ```
 
 Alternatively, set the environment as default for the project directory:
 
 ```zsh
-pyenv local project-env
+pyenv local env
 ```
 
-Now, every time you navigate inside your project folder, your system will automatically point to the desired Python executable!
+Now, every time you navigate inside the project directory, your system will automatically point to the desired Python executable!
+
+Deactivate the environment:
+
+```zsh
+source deactivate
+```
 
 ## Windows
 
@@ -133,6 +137,8 @@ Now, every time you navigate inside your project folder, your system will automa
 - [Chocolatey](https://chocolatey.org)
 
 Similar to Homebrew for macOS, Chocolatey is a community-driven general package manager for Windows.
+
+**The following steps must be executed in an Administrative shell!**
 
 Install Chocolatey:
 
@@ -145,7 +151,6 @@ Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://com
 Confirm installation:
 
 ```ps1
-refreshenv
 choco --version
 ```
 
@@ -160,7 +165,6 @@ choco install pyenv-win
 Confirm installation
 
 ```ps1
-refreshenv
 pyenv --version
 ```
 
@@ -181,7 +185,6 @@ Set-ExecutionPolicy RemoteSigned
 Once again, confirm `pyenv` installation:
 
 ```ps1
-refreshenv
 pyenv --version
 ```
 
@@ -194,7 +197,7 @@ pyenv install --list
 Restrict the output to a specific major Python version:
 
 ```ps1
-pyenv install --list -Filter "* 3.10*" # Only show Python 3.10.x
+pyenv install -l | findstr 3.10 # Only show Python 3.10.x
 ```
 
 Install a Python version:
