@@ -197,7 +197,7 @@ pyenv install --list
 Restrict the output to a specific major Python version:
 
 ```ps1
-pyenv install -l | findstr 3.10 # Only show Python 3.10.x
+pyenv install -l | Select-String " 3.10" # Only show Python 3.10.x
 ```
 
 Install a Python version:
